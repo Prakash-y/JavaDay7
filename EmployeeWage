@@ -1,0 +1,62 @@
+package Uc;
+import java.util.Random;
+public class Employee_Wage
+{
+	
+	   public static void main(String[] args)
+	   {
+	        System.out.println("Welcome to Employee Wage Computation Program on Master Branch");
+
+	        int wagePerHour = 20;
+	        int fullDayHour = 8;
+	        int partTimeHour = 4;
+	        int workingDaysPerMonth = 20;
+	        int maxWorkingDaysPerMonth = 20;
+	        int maxWorkingHoursPerMonth = 100;
+
+	        Random random = new Random();
+	        int attendance = random.nextInt(2); 
+
+	        int totalWorkingDays = 0;
+	        int totalWorkingHours = 0;
+	        int totalWage = 0;
+
+	    while (totalWorkingDays < maxWorkingDaysPerMonth && totalWorkingHours < maxWorkingHoursPerMonth)
+	    {
+	            totalWorkingDays++;
+
+	            int employeeType = random.nextInt(3); 
+	            int dailyWage = 0;
+
+	            switch (employeeType) 
+	            {
+	                case 0:
+	                    System.out.println("Employee is absent");
+	                    break;
+	                case 1:
+	                    System.out.println("Employee is full time present");
+	                    dailyWage = wagePerHour * fullDayHour;
+	                    break;
+	                case 2:
+	                    System.out.println("Employee is part time present");
+	                    dailyWage = wagePerHour * partTimeHour;
+	                    break;
+	                default:
+	                    System.out.println("Invalid employee type");
+	                    break;
+	            }
+	           
+
+	       totalWorkingHours += (employeeType == 1) ? fullDayHour : ((employeeType == 2) ? partTimeHour : 0);
+	            totalWage += dailyWage;
+	        }
+	   
+
+	        System.out.println("Total working days in the month: " + totalWorkingDays);
+	        System.out.println("Total working hours in the month: " + totalWorkingHours);
+	        System.out.println("Total wage for the month: " + totalWage);
+	    }
+}
+
+
+
